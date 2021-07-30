@@ -11,15 +11,15 @@ else
 
 # Query current CPU governor
 cpufreq=$(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1)
-echo "Your current CPU governor is: $cpufreq"
+echo "Your current CPU governor is: \n $cpufreq"
 
 # CPU Governor interactive selector
 echo "Please select cpu governor:
 	1. Performance (full CPU frequency, kills battery)
-	2. Ondemand    (Balanced CPU frequency, saves battery)
+	2. Ondemand    (CPU frequency scales as programs need it, saves battery)
 	3. Powersave   (Low CPU frequency, saves even more battery)
 	"
-
+# Grab user input
 read option
 	case $option in
 		1)

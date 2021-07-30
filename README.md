@@ -14,5 +14,6 @@ Simple bash interactive tool built around cpupower to select cpu frequency gover
 5. Optionally, you can move it to `/usr/local/bin`if you want to have it available to all users.
 
 # Notes
+* This script must be run as root.
 * The effects of this script will not persist on reboot.
 * This script has not yet been tested on RHEL based distros, will test soon.
