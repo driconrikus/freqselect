@@ -25,3 +25,4 @@ You can also choose to keep settings at boot time with the persistance option.
 
 # Notes
 * This script must be run as root.
+* Persistance mode relies on systemd, it will not work on init based systems.
