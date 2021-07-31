@@ -23,10 +23,10 @@ echo -e "Your current CPU governor is: ${GREEN}${BOLD} ${cpufreq} ${NC}"
 
 # CPU Governor interactive selector
 echo -e "Please select a CPU governor:
-	1. performance ${DIM}(full CPU frequency at all times, best performance, kills battery, increases CPU temperatures.)${NC}
-	2. ondemand    ${DIM}(CPU frequency scales depending on current system load, saves battery.)${NC}
-	3. powersave   ${DIM}(Low CPU frequency at all times, slow performance, saves even more battery.)${NC}
-	4. schedutil   ${DIM}(Defaut governor. Similar to ondemand.)${NC}
+	1. performance ${DIM}(Best performance. Full CPU frequency at all times, increases CPU temperatures, ${BOLD}reduces battery life significantly.)${NC}
+	2. ondemand    ${DIM}(Balanced performarmance. CPU frequency scales depending on current system load, ${BOLD}average battery life.)${NC}
+	3. powersave   ${DIM}(Slow performance. Low CPU frequency at all times, ${BOLD}increases battery life significantly.)${NC}
+	4. schedutil   ${DIM}(Defaut setting. Similar to ondemand. ${BOLD}Average battery life.)${NC}
 	"
 # Grab user input
 read option
