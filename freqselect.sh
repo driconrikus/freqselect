@@ -20,12 +20,12 @@ while true; do
 # Query current CPU governor
 cpufreq=$(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1)
 echo -e "Your current CPU frequency governor is: ${GREEN}${BOLD} ${cpufreq} ${NC}"
-#Persistance status placeholder
-persistance=$(systemctl status cpupower.service | grep "Succeeded" | awk '{print $7}')
-if [[ $persistance == "Succeeded." ]]; then
-echo -e "Persistance status: ${GREEN}${BOLD}Active${NC}" 
+#Persistence status placeholder
+persistence=$(systemctl status cpupower.service | grep "Succeeded" | awk '{print $7}')
+if [[ $persistence == "Succeeded." ]]; then
+echo -e "Persistence status: ${GREEN}${BOLD}Active${NC}" 
 else
-echo -e "Persistance status: ${RED}${BOLD}Inactive${NC}"
+echo -e "Persistence status: ${RED}${BOLD}Inactive${NC}"
 fi
 # CPU Governor interactive selector
 echo -e "Please select a CPU governor:
@@ -33,8 +33,8 @@ echo -e "Please select a CPU governor:
 2. ondemand    ${DIM}(Balanced performarmance. CPU frequency scales depending on current system load, ${BOLD}average battery life.)${NC}
 3. powersave   ${DIM}(Slow performance. Low CPU frequency at all times, ${BOLD}increases battery life significantly.)${NC}
 4. schedutil   ${DIM}(Defaut setting. Similar to ondemand. ${BOLD}Average battery life.)${NC}
-5. Enable persistance. ${DIM}(Keeps settings across reboots.)${NC}
-6. Disable persistance.
+5. Enable persistence. ${DIM}(Keeps settings across reboots.)${NC}
+6. Disable persistence.
 7. Exit
 "
 # Grab user input
@@ -71,9 +71,9 @@ read option
     			echo -e "${GREEN}Service is already enabled!${NC} \n"
 				sleep 3
 		  else 
-		  echo -e "Enabling persistance..."
+		  echo -e "Enabling persistence..."
 		  echo "[Unit]
-Description=cpufreq governor persistance
+Description=cpufreq governor persistence
 [Service]
 Type=simple
 ExecStart=/usr/bin/cpupower -c all frequency-set --governor ${cpufreq}
@@ -81,17 +81,17 @@ ExecStart=/usr/bin/cpupower -c all frequency-set --governor ${cpufreq}
 WantedBy=multi-user.target" >> /etc/systemd/system/cpupower.service
 		  systemctl daemon-reload
 		  systemctl enable cpupower.service --now
-		  echo -e "${GREEN}Persistance has been enabled.${NC}\n"
+		  echo -e "${GREEN}Persistence has been enabled.${NC}\n"
 		  sleep 3
 		  fi
 		 ;;
 # deletes the created systemd unit.
 		6)
-			echo -e "Disabling persistance..."
+			echo -e "Disabling persistence..."
 			systemctl disable cpupower.service --now
 			rm /etc/systemd/system/cpupower.service
 			systemctl daemon-reload
-			echo -e "${RED}Persistance has been disabled.${NC}\n"
+			echo -e "${RED}Persistence has been disabled.${NC}\n"
 			sleep 3
 		 ;;
 		7)

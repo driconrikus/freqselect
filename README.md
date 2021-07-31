@@ -7,7 +7,7 @@ Current options are:
 * powersave   (Slow performance. Low CPU frequency at all times, **increases battery life significantly.**)
 * schedutil   (Defaut setting. Similar to ondemand. **Average battery life.**)
 
-You can also choose to keep settings at boot time with the persistance option.
+You can also choose to keep settings at boot time with the persistence option.
 
 # Requirements
 
@@ -25,4 +25,4 @@ You can also choose to keep settings at boot time with the persistance option.
 
 # Notes
 * This script must be run as root.
-* Persistance mode relies on systemd, it will not work on init based systems.
+* Persistence mode relies on systemd, it will not work on init based systems.
