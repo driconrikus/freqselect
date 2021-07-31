@@ -13,7 +13,7 @@ BOLD='\e[1m'
 
 # Check if user is root
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root"
+   echo "This script must be run as ${RED}root!${NC}"
    exit 1
 else
 
@@ -22,11 +22,11 @@ cpufreq=$(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1)
 echo -e "Your current CPU governor is: ${GREEN}${BOLD} ${cpufreq} ${NC}"
 
 # CPU Governor interactive selector
-echo -e "Please select CPU governor:
-	1. performance ${DIM}(full CPU frequency at all times, best performance kills battery, increases CPU temperatures)${NC}
-	2. ondemand    ${DIM}(CPU frequency scales depending on current system load, saves battery)${NC}
-	3. powersave   ${DIM}(Low CPU frequency at all times, slow performance, saves even more battery)${NC}
-	4. schedutil   ${DIM}(Defaut governor. Similar to ondemand)${NC}
+echo -e "Please select a CPU governor:
+	1. performance ${DIM}(full CPU frequency at all times, best performance, kills battery, increases CPU temperatures.)${NC}
+	2. ondemand    ${DIM}(CPU frequency scales depending on current system load, saves battery.)${NC}
+	3. powersave   ${DIM}(Low CPU frequency at all times, slow performance, saves even more battery.)${NC}
+	4. schedutil   ${DIM}(Defaut governor. Similar to ondemand.)${NC}
 	"
 # Grab user input
 read option
