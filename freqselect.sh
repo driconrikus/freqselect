@@ -29,14 +29,14 @@ echo -e "Persistance status: ${RED}${BOLD}Inactive${NC}"
 fi
 # CPU Governor interactive selector
 echo -e "Please select a CPU governor:
-	1. performance ${DIM}(Best performance. Full CPU frequency at all times, ${BOLD}reduces battery life significantly.)${NC}
-	2. ondemand    ${DIM}(Balanced performarmance. CPU frequency scales depending on current system load, ${BOLD}average battery life.)${NC}
-	3. powersave   ${DIM}(Slow performance. Low CPU frequency at all times, ${BOLD}increases battery life significantly.)${NC}
-	4. schedutil   ${DIM}(Defaut setting. Similar to ondemand. ${BOLD}Average battery life.)${NC}
-	5. Enable persistance. ${DIM}(Keeps settings across reboots.)${NC}
-	6. Disable persistance.
-	7. Exit
-	"
+1. performance ${DIM}(Best performance. Full CPU frequency at all times, ${BOLD}reduces battery life significantly.)${NC}
+2. ondemand    ${DIM}(Balanced performarmance. CPU frequency scales depending on current system load, ${BOLD}average battery life.)${NC}
+3. powersave   ${DIM}(Slow performance. Low CPU frequency at all times, ${BOLD}increases battery life significantly.)${NC}
+4. schedutil   ${DIM}(Defaut setting. Similar to ondemand. ${BOLD}Average battery life.)${NC}
+5. Enable persistance. ${DIM}(Keeps settings across reboots.)${NC}
+6. Disable persistance.
+7. Exit
+"
 # Grab user input
 read option
 	case $option in
@@ -70,7 +70,7 @@ read option
     			echo -e "${GREEN}Service is already enabled!${NC} \n"
 				sleep 3
 		  else 
-		  echo -e "Applying persistance... \n"
+		  echo -e "Enabling persistance..."
 		  echo "[Unit]
 Description=cpufreq governor persistance
 [Service]
@@ -78,10 +78,9 @@ Type=simple
 ExecStart=/usr/bin/cpupower -c all frequency-set --governor ${cpufreq}
 [Install]
 WantedBy=multi-user.target" >> /etc/systemd/system/cpupower.service
-		  echo "Enabling persistance..."
 		  systemctl daemon-reload
 		  systemctl enable cpupower.service --now
-		  echo -e "Done! \n"
+		  echo -e "${GREEN}Persistance has been enabled.${NC}\n"
 		  sleep 3
 		  fi
 		 ;;
@@ -90,7 +89,7 @@ WantedBy=multi-user.target" >> /etc/systemd/system/cpupower.service
 			systemctl disable cpupower.service --now
 			rm /etc/systemd/system/cpupower.service
 			systemctl daemon-reload
-			echo -e "Done! \n"
+			echo -e "${RED}Persistance has been disabled.${NC}\n"
 			sleep 3
 		 ;;
 		7)
@@ -98,8 +97,8 @@ WantedBy=multi-user.target" >> /etc/systemd/system/cpupower.service
 		  exit 0
 		  ;;
 		*)
-			echo -e "${RED}Invalid option${NC}. Please choose a number from above! \n"
-			sleep 3
+		  echo -e "${RED}Invalid option${NC}. Please choose a number from above! \n"
+		  sleep 3
 	 	 ;;
 	esac
 	done		
