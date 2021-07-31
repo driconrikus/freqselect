@@ -19,7 +19,7 @@ else
 while true; do
 # Query current CPU governor
 cpufreq=$(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1)
-echo -e "Your current CPU governor is: ${GREEN}${BOLD} ${cpufreq} ${NC}"
+echo -e "Your current CPU frequency governor is: ${GREEN}${BOLD} ${cpufreq} ${NC}"
 #Persistance status placeholder
 persistance=$(systemctl status cpupower.service | grep "Succeeded" | awk '{print $7}')
 if [[ $persistance == "Succeeded." ]]; then
@@ -64,6 +64,7 @@ read option
 		  echo "Done!"
 		  exit 0
 		 ;;
+# writes a systemd unit with cpupower and the chosen cpu governor then enables it at boot time.
 		5)
 		  pers_file=/etc/systemd/system/cpupower.service
 		  if [ -f "$pers_file" ]; then
@@ -84,6 +85,7 @@ WantedBy=multi-user.target" >> /etc/systemd/system/cpupower.service
 		  sleep 3
 		  fi
 		 ;;
+# deletes the created systemd unit.
 		6)
 			echo -e "Disabling persistance..."
 			systemctl disable cpupower.service --now
@@ -97,7 +99,7 @@ WantedBy=multi-user.target" >> /etc/systemd/system/cpupower.service
 		  exit 0
 		  ;;
 		*)
-		  echo -e "${RED}Invalid option${NC}. Please choose a number from above! \n"
+		  echo -e "${RED}Invalid option${NC}. Please choose an option from above! \n"
 		  sleep 3
 	 	 ;;
 	esac
