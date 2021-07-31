@@ -17,4 +17,3 @@ Simple bash interactive tool built around cpupower to select cpu frequency gover
 
 # Notes
 * This script must be run as root.
-* The effects of this script will not persist on reboot. To be implemented.
