@@ -23,37 +23,37 @@ echo -e "Your current CPU governor is: ${GREEN}${BOLD} ${cpufreq} ${NC}"
 
 # CPU Governor interactive selector
 echo -e "Please select CPU governor:
-	1. performance ${DIM}(full CPU frequency at all times, kills battery, increases CPU temperatures)${NC}
+	1. performance ${DIM}(full CPU frequency at all times, best performance kills battery, increases CPU temperatures)${NC}
 	2. ondemand    ${DIM}(CPU frequency scales depending on current system load, saves battery)${NC}
-	3. powersave   ${DIM}(Low CPU frequency at all times, saves even more battery)${NC}
+	3. powersave   ${DIM}(Low CPU frequency at all times, slow performance, saves even more battery)${NC}
 	4. schedutil   ${DIM}(Defaut governor. Similar to ondemand)${NC}
 	"
 # Grab user input
 read option
 	case $option in
 		1)
-		  echo -e "Setting governor to ${RED}performance${NC}..."
+		  echo -e "Setting governor to ${BLUE}${BOLD}performance${NC}..."
 		  cpupower frequency-set --governor performance
 		  echo "Done!"
 		 ;;
 		2)
-		  echo -e "Setting governor to ${BLUE}ondemand${NC}..."
+		  echo -e "Setting governor to ${BLUE}${BOLD}ondemand${NC}..."
 		  cpupower frequency-set --governor ondemand
 		  echo "Done!"
 		 ;;
 		3)
-		  echo -e "Setting governor to ${GREEN}powersave${NC}..."
+		  echo -e "Setting governor to ${BLUE}${BOLD}powersave${NC}..."
 		  cpupower frequency-set --governor powersave
 		  echo "Done!"
 		 ;;
 		4)
-		  echo -e "Setting governor to ${BLUE}schedutil${NC}..."
+		  echo -e "Setting governor to ${BLUE}${BOLD}schedutil${NC}..."
 		  cpupower frequency-set --governor schedutil
 		  echo "Done!"
 		 ;;
 		 *)
-			echo "Invalid option. Please choose 1, 2 or 3"
+			echo "Invalid option. Please choose a number from above!"
+			exit 1
 	 	 ;;
-	esac
-			
+	esac		
 fi
