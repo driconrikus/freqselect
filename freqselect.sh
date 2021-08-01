@@ -29,13 +29,13 @@ echo -e "Persistence status: ${RED}${BOLD}Inactive${NC}"
 fi
 # CPU Governor interactive selector
 echo -e "Please select a CPU governor:
-1. performance ${DIM}(Best performance. Full CPU frequency at all times, ${BOLD}reduces battery life significantly.)${NC}
-2. ondemand    ${DIM}(Balanced performarmance. CPU frequency scales depending on current system load, ${BOLD}average battery life.)${NC}
-3. powersave   ${DIM}(Slow performance. Low CPU frequency at all times, ${BOLD}increases battery life significantly.)${NC}
-4. schedutil   ${DIM}(Defaut setting. Similar to ondemand. ${BOLD}Average battery life.)${NC}
-5. Enable persistence. ${DIM}(Keeps settings across reboots.)${NC}
-6. Disable persistence.
-7. Exit
+1. ${BOLD}performance${NC} ${DIM}(Best performance. Full CPU frequency at all times, ${BOLD}reduces battery life significantly.)${NC}
+2. ${BOLD}ondemand${NC}    ${DIM}(Balanced performarmance. CPU frequency scales depending on current system load, ${BOLD}average battery life.)${NC}
+3. ${BOLD}powersave${NC}   ${DIM}(Slow performance. Low CPU frequency at all times, ${BOLD}increases battery life significantly.)${NC}
+4. ${BOLD}schedutil${NC}   ${DIM}(Defaut setting. Similar to ondemand. ${BOLD}Average battery life.)${NC}
+5. ${BOLD}Enable persistence${NC} ${DIM}(Keeps settings across reboots.)${NC}
+6. ${BOLD}Disable persistence${NC}
+7. ${BOLD}Exit${NC}
 "
 # Grab user input
 read option
