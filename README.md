@@ -1,13 +1,7 @@
 # freqselect
 Simple interactive tool built around cpupower to manipulate CPU frequency governor from command line to help you get the best performance or battery life for your computer.
 
-Current options are:
-* performance (Best performance. Full CPU frequency at all times, **reduces battery life significantly.**)
-* ondemand    (Balanced performarmance. CPU frequency scales depending on current system load, **average battery life.**)
-* powersave   (Slow performance. Low CPU frequency at all times, **increases battery life significantly.**)
-* schedutil   (Defaut setting. Similar to ondemand. **Average battery life.**)
-
-You can also choose to keep settings at boot time with the persistence option.
+![alt text](https://github.com/driconrikus/freqselect/blob/main/demo/demo.png?raw=true)
 
 # Requirements
 
